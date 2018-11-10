@@ -1,0 +1,10 @@
+[package]
+name = "autonomy"
+version = "0.1.0"
+authors = []
+edition = "2018"
+
+[dependencies]
+kiss3d = "0.16.4"
+nalgebra = "0.16.9"
+num = "0.2.0"
