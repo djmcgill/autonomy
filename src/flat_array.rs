@@ -24,14 +24,14 @@ impl FlatArray {
 
                 let ix_diff = coords.len() as u16;
 
-                coords.push(Point3::new(-0.5 + x_diff, -0.5 + y_diff, 0.5 + z_diff));
-                coords.push(Point3::new(-0.5 + x_diff, -0.5 + y_diff, -0.5 + z_diff));
-                coords.push(Point3::new(0.5 + x_diff, -0.5 + y_diff, -0.5 + z_diff));
-                coords.push(Point3::new(0.5 + x_diff, -0.5 + y_diff, 0.5 + z_diff));
-                coords.push(Point3::new(-0.5 + x_diff, 0.5 + y_diff, 0.5 + z_diff));
-                coords.push(Point3::new(-0.5 + x_diff, 0.5 + y_diff, -0.5 + z_diff));
-                coords.push(Point3::new(0.5 + x_diff, 0.5 + y_diff, -0.5 + z_diff));
-                coords.push(Point3::new(0.5 + x_diff, 0.5 + y_diff, 0.5 + z_diff));
+                coords.push(Point3::new(0.0 + x_diff, 0.0 + y_diff, 1.0 + z_diff));
+                coords.push(Point3::new(0.0 + x_diff, 0.0 + y_diff, 0.0 + z_diff));
+                coords.push(Point3::new(1.0 + x_diff, 0.0 + y_diff, 0.0 + z_diff));
+                coords.push(Point3::new(1.0 + x_diff, 0.0 + y_diff, 1.0 + z_diff));
+                coords.push(Point3::new(0.0 + x_diff, 1.0 + y_diff, 1.0 + z_diff));
+                coords.push(Point3::new(0.0 + x_diff, 1.0 + y_diff, 0.0 + z_diff));
+                coords.push(Point3::new(1.0 + x_diff, 1.0 + y_diff, 0.0 + z_diff));
+                coords.push(Point3::new(1.0 + x_diff, 1.0 + y_diff, 1.0 + z_diff));
 
                 faces.push(Point3::new(6 + ix_diff, 2 + ix_diff, 1 + ix_diff));
                 faces.push(Point3::new(1 + ix_diff, 5 + ix_diff, 6 + ix_diff));
