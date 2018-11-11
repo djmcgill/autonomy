@@ -2,6 +2,8 @@ use nalgebra::*;
 use kiss3d::window::*;
 use kiss3d::scene::*;
 
+use super::CUBES_PER_SIDE;
+
 pub struct SelectedCube{pub x: usize, pub y: usize, pub z: usize}
 impl SelectedCube {
     pub fn new() -> Self {
@@ -16,6 +18,44 @@ impl SelectedCube {
                 self.z as f32
             )
         )
+    }
+
+    pub fn north(&mut self, selected_cube_node: &mut SceneNode) {
+        if self.z < CUBES_PER_SIDE-1 {
+            self.z += 1;
+            self.move_selected_cube_node(selected_cube_node);
+        }
+    }
+
+    pub fn south(&mut self, selected_cube_node: &mut SceneNode) {
+        if self.z > 0 {
+            self.z -= 1;
+            self.move_selected_cube_node(selected_cube_node);
+        }
+    }
+    pub fn east(&mut self, selected_cube_node: &mut SceneNode) {
+        if self.x > 0 {
+            self.x -= 1;
+            self.move_selected_cube_node(selected_cube_node);
+        }
+    }
+    pub fn west(&mut self, selected_cube_node: &mut SceneNode) {
+        if self.x < CUBES_PER_SIDE-1 {
+            self.x += 1;
+            self.move_selected_cube_node(selected_cube_node);
+        }
+    }
+    pub fn up(&mut self, selected_cube_node: &mut SceneNode) {
+        if self.y < CUBES_PER_SIDE-1 {
+            self.y += 1;
+            self.move_selected_cube_node(selected_cube_node);
+        }
+    }
+    pub fn down(&mut self, selected_cube_node: &mut SceneNode) {
+        if self.y > 0 {
+            self.y -= 1;
+            self.move_selected_cube_node(selected_cube_node);
+        }
     }
 
     pub fn add_selected_cube_node(window: &mut Window) -> SceneNode {

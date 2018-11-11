@@ -3,6 +3,8 @@ use kiss3d::resource::Mesh;
 use nalgebra::*;
 use num::Integer;
 use super::selected_cube::SelectedCube;
+use std::rc::Rc;
+use std::cell::RefCell;
 
 pub struct FlatArray([bool; CUBES_PER_SIDE*CUBES_PER_SIDE*CUBES_PER_SIDE]);
 impl FlatArray {
@@ -67,9 +69,10 @@ impl FlatArray {
 
     }
 
-    pub fn toggle(&mut self, selected_cube: &SelectedCube) {
+    pub fn toggle(&mut self, selected_cube: &SelectedCube, mesh: Rc<RefCell<Mesh>>) {
         let SelectedCube{x, y, z} = selected_cube;
         let selected_cube_ix = x + y*CUBES_PER_SIDE + z*CUBES_PER_SIDE*CUBES_PER_SIDE;
         self.0[selected_cube_ix] = !self.0[selected_cube_ix];
+        *mesh.borrow_mut() = self.dumb_mesh();
     }
 }
