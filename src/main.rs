@@ -26,9 +26,9 @@ fn main() {
     // Initialisation
     let mut window = Window::new("Autonomy");
     let mut camera = ArcBall::new(
-        Point3::new(0., 0., -10.),
+        Point3::new(0., 0.025, -10.),
 //        Point3::new(1.5, 7., -10.),
-        Point3::new(0., 0., 0.),
+        Point3::new(0., 0.025, 0.),
     );
     window.set_light(Light::StickToCamera);
 
@@ -51,6 +51,10 @@ fn main() {
     while window.render_with_camera(&mut camera) {
         for event in window.events().iter() {
             match event.value {
+                WindowEvent::Key(Key::Q, Action::Press, _) => camera = ArcBall::new(
+                    Point3::new(0., 0., -10.),
+                    Point3::new(0., 0., 0.),
+                ),
                 WindowEvent::Key(Key::E, Action::Press, _) => cubes.toggle(&selected_cube, mesh.clone()),
                 WindowEvent::Key(Key::A, Action::Press, _) => selected_cube.west(&mut selected_cube_node),
                 WindowEvent::Key(Key::D, Action::Press, _) => selected_cube.east(&mut selected_cube_node),
